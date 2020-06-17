@@ -1,14 +1,10 @@
 ---
 title: "DECO"
 output:
-  html_notebook:
-    toc: yes
+  md_document:
     variant: markdown_github
-  html_document:
-    df_print: paged
-    toc: yes
-  pdf_document:
-    toc: yes
+    toc: true
+
 ---
 
 # Introduction

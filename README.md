@@ -17,12 +17,9 @@
 Introduction
 ============
 
-`DECO` jointly analyzes de novo mutations (DNMs) of parent-offspring
-trios, rare case/control variants and gene-set information to:
-
-1.  conduct gene-set enrichment analysis (GSEA),
-
-2.  prioritize risk genes for the tested disease.
+`DECO` jointly models de novo mutations (DNMs) of parent-offspring
+trios, rare case/control variants and gene-set information to prioritize
+risk genes for the tested disease.
 
 Usage
 =====
