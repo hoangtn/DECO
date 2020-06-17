@@ -1,17 +1,16 @@
 -   [Introduction](#introduction)
 -   [Usage](#usage)
-    -   [Run `DECO` for both variant and gene-set
-        data.](#run-textttdeco-for-both-variant-and-gene-set-data.)
-        -   [Data format](#data-format)
+    -   [Running `DECO` for both variant and gene-set
+        data.](#running-textttdeco-for-both-variant-and-gene-set-data.)
+        -   [Format data](#format-data)
         -   [Use `DECO` function](#run1)
-        -   [Outputs of `DECO`](#outputs-of-textttdeco)
-    -   [Using genetic parameters from previous studies or from 1) to
-        run
-        `DECO`](#using-genetic-parameters-from-previous-studies-or-from-1-to-run-textttdeco)
+        -   [Check outputs of `DECO`](#check-outputs-of-textttdeco)
+    -   [Running `DECO` by using genetic parameters from previous
+        studies](#running-textttdeco-by-using-genetic-parameters-from-previous-studies)
         -   [Read a gene-set (e.g. pLI09 in this
             example)](#read-a-gene-set-e.g.pli09-in-this-example)
         -   [Run `DECO`](#run-textttdeco)
-        -   [Results](#results)
+        -   [Check results](#check-results)
 -   [Citation](#citation)
 
 Introduction
@@ -37,14 +36,14 @@ There are two ways to obtain analysis results of `DECO`:
     `DECO`. It takes approximately 3 seconds for one gene-set. This
     approach can be used to analyze some thousands of gene-sets.
 
-Run `DECO` for both variant and gene-set data.
-----------------------------------------------
+Running `DECO` for both variant and gene-set data.
+--------------------------------------------------
 
 Below is an example for jointly analyzing variant data of schizophrenia
 (SCZ) and a gene-set. The SCZ data is from
 [https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-017-0497-y](Nguyen%20et%20al.,%202017,%20Genome%20Medicine).
 
-### Data format
+### Format data
 
 The data should be formatted as the `xInputGS` table below:
 
@@ -92,7 +91,7 @@ outSCZ <- DECO(
     )
 ```
 
-### Outputs of `DECO`
+### Check outputs of `DECO`
 
 Output is a list of:
 
@@ -117,8 +116,8 @@ fdr1 <- outSCZ$dataPP
 dim(fdr1[fdr1$FDR < 0.05, ])
 ```
 
-Using genetic parameters from previous studies or from 1) to run `DECO`
------------------------------------------------------------------------
+Running `DECO` by using genetic parameters from previous studies
+----------------------------------------------------------------
 
 We describe an example in which we used genetic parameters from 1) to
 run `DECO`. To use this approach, we need Bayes Factors (BF) and *π*.
@@ -154,7 +153,7 @@ outSCZ2 <- DECO(
     )
 ```
 
-#### Results
+#### Check results
 
 ``` r
 fdr2 <- outSCZ2$dataPP

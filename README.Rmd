@@ -22,12 +22,12 @@ There are two ways to obtain analysis results of $\texttt{DECO}$:
   2) Using genetic parameters from previous studies or from 1) to run $\texttt{DECO}$. It takes approximately 3 seconds for one gene-set. This approach can be used to analyze some thousands of  gene-sets.
   
 
-## Run $\texttt{DECO}$ for both variant and gene-set data.
+## Running $\texttt{DECO}$ for both variant and gene-set data.
 
 Below is an example for jointly analyzing variant data of schizophrenia (SCZ) and a gene-set. The SCZ data is from [https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-017-0497-y](Nguyen et al., 2017, Genome Medicine).
 
 
-### Data format
+### Format data
 The data should be formatted as the $\texttt{xInputGS}$ table below:
 
   - Mutation rates should start with $\texttt{mut_}$.
@@ -78,7 +78,7 @@ outSCZ <- DECO(
 
 ```
 
-### Outputs of $\texttt{DECO}$
+### Check outputs of $\texttt{DECO}$
 
 Output is a list of:
 
@@ -101,7 +101,7 @@ fdr1 <- outSCZ$dataPP
 dim(fdr1[fdr1$FDR < 0.05, ])
 ```
 
-## Using genetic parameters from previous studies or from 1) to run $\texttt{DECO}$
+##  Running $\texttt{DECO}$ by using genetic parameters from previous studies
 
 We describe an example in which we used genetic parameters from 1) to run $\texttt{DECO}$. To use this approach, we need Bayes Factors (BF) and $\pi$.
 ```{r}
@@ -137,7 +137,7 @@ outSCZ2 <- DECO(
 
 ```
 
-#### Results
+#### Check results
 
 ```{r}
 fdr2 <- outSCZ2$dataPP
