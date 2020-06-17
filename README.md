@@ -45,7 +45,8 @@ Run `DECO` for both variant and gene-set data.
 
 Below is an example for jointly analyzing variant data of schizophrenia
 (SCZ) and a gene-set. The SCZ data is from
-[https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-017-0497-y](Nguyen%20et%20al.,%202017,%20Genome%20Medicine).
+(<a href="https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-017-0497-y" class="uri">https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-017-0497-y</a>)\[Nguyen
+et al., 2017, Genome Medicine\].
 
 ### Data format
 

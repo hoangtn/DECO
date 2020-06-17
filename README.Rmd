@@ -28,7 +28,7 @@ There are two ways to obtain analysis results of $\texttt{DECO}$:
 
 ## Run $\texttt{DECO}$ for both variant and gene-set data.
 
-Below is an example for jointly analyzing variant data of schizophrenia (SCZ) and a gene-set. The SCZ data is from [https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-017-0497-y](Nguyen et al., 2017, Genome Medicine).
+Below is an example for jointly analyzing variant data of schizophrenia (SCZ) and a gene-set. The SCZ data is from (https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-017-0497-y)[Nguyen et al., 2017, Genome Medicine].
 
 
 ### Data format
