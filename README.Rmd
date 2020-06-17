@@ -1,23 +1,19 @@
 ---
 title: "DECO"
 output:
-  pdf_document:
-    toc: yes
   html_notebook:
     toc: yes
     variant: markdown_github
   html_document:
     df_print: paged
     toc: yes
+  pdf_document:
+    toc: yes
 ---
 
 # Introduction
 
-$\texttt{DECO}$ jointly analyzes de novo mutations (DNMs) of parent-offspring trios, rare case/control variants and gene-set information to:
-
-  1) conduct gene-set enrichment analysis (GSEA),
-  
-  2) prioritize risk genes for the tested disease.
+$\texttt{DECO}$ jointly models de novo mutations (DNMs) of parent-offspring trios, rare case/control variants and gene-set information to prioritize risk genes for the tested disease.
 
 # Usage
 
