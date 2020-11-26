@@ -105,11 +105,11 @@ DECO <- function(inputData,
     
     if (is.null(nThin))
         nThin <- floor(nIteration/1000)
-                                        #                  message("print(head(dataDN)) :", head(dataDN))
 
     ##There are two sections: using BFs (faster) or not using BFs (slow, using MCMC)
     if (!(useBF)){
 
+        
         if (is.null(pi0)){
             alpha01Mean <- -2
         }
@@ -154,7 +154,7 @@ DECO <- function(inputData,
         
         pars0 <- estimatePars(pars = parNames,
                               mcmcResult = mcmcData)
-        print(pars0)
+        ##print(pars0)
         pars1 <- as.numeric(pars0[, 1])
         names(pars1) <- rownames(pars0)
 
@@ -203,27 +203,23 @@ DECO <- function(inputData,
 ########################
         message(paste0("\nThe analysis is completed.\nIf you want to analyse steps seperately, please take a look at the example in the manual"))
 
-
         piTemp <- as.numeric(pars0[1, 1:3])
         piTemp <- exp(piTemp)/(1 + exp(piTemp))
         pi0 <- piTemp[1]
         piTemp <- c('pi0', piTemp, 0, 0, 0)
 
-        print(piTemp)
         pars0 <- cbind(rownames(pars0), pars0)
         colnames(pars0)[1] <- c("Parameter")
-
-        
         pars0 <- t(data.frame(pi0 = piTemp, t(pars0)))
 
         if (dim(geneSetData0)[2] != 0){
             print("Adding gene-set info")
-            print(head(geneSetData, 2))
-            print(head(dataFDR, 2))
+##            print(head(geneSetData, 2))
+##            print(head(dataFDR, 2))
             
             colnames(dataFDR)[1] <- c("Gene")
             dataFDR <- merge(dataFDR, geneSetData, by = 'Gene')
-            print(head(dataFDR, 2))
+  ##          print(head(dataFDR, 2))
             print("Done")
         }
 
@@ -232,8 +228,6 @@ DECO <- function(inputData,
 
     }
 
-
-        
         pH0 <- p0.temp.dn <- p0.temp.cc <- rep(1, dim(inputData)[1])
         if (!is.null(dataDN)){
             p0.temp.dn <- pH0.model.DN(data.dn = dataDN, data.mut = mutRate, n.dn = Ndn)
@@ -290,22 +284,25 @@ DECO <- function(inputData,
                 
                 return(zVector)
             }))
-            head(E1, 2)
             E2 <- t(apply(E1, 1, function(x) x/sum(x)))
-            head(E2, 2)
+            ##message("E1: ", head(E1, 2))
+            ##message("E2: ", head(E2, 2))
 ###################################################
-                                        # M step
+#### M step
 ###################################################
             for (iz in 2:length(piM)){
                 for (jz in 1:dim(xGS)[2])
                     e.q[iz, jz] <- sum(E2[, iz]*xGS[, jz])/sum(E2[, iz])
             }
+            
             e.qList[[kk1]] <- e.q
                                         # Log likelihood
             LK <- rowSums(E1)
             LK <- pH0*LK
             logLK[kk1] <- sum(log(LK))
 
+##            message("logLK: ", logLK)
+##            message("kk1: ", kk1)
             if (kk1 > 1)
                 if (abs(logLK[kk1] - logLK[kk1 -1 ]) < eLlk)
                     break
@@ -1196,7 +1193,7 @@ BayesFactorCC3 <- function(x.case, x.control, Nsample,
 
         return(t1)
     })
-                                        #    print(nullCC)
+
 
     tempBF <- altCC/nullCC #ifelse((x.case == 0) & (x.control == 0), 1, altCC/nullCC)
     return(list(BF = tempBF, llk1 = altCC, llk0 = nullCC))
@@ -1527,7 +1524,7 @@ estimatePars <- function(pars, mcmcResult, nThin = NULL, eSD = 10^-8){
     if (length(pars[!is.element(pars, colnames(mcmcDataFrame))]) > 0)
         warning((pars[!is.element(pars, colnames(mcmcDataFrame))]), " is/are not in mcmc chains")
     pars <- pars[is.element(pars, colnames(mcmcDataFrame))]
-#print(pars)
+
     hpdList <- NULL
     bSD <- apply(mcmcDataFrame[, pars], 2, sd)
     
@@ -2201,7 +2198,7 @@ transformed parameters {
 pH0.model.CC <- function(data.cc, n.cc, rho0 = NULL, nu0 = NULL){
     p.null.CC <- matrix(0, nrow = dim(data.cc)[1], ncol = dim(data.cc)[2]/2)
     for (j in 1:floor(dim(data.cc)[2]/2)){
-        print(head(data.cc))
+        ##print(head(data.cc))
         dataTemp <- data.cc[, paste0(c("cc_case", "cc_control"), j), drop = FALSE]
         if (is.null(nu0)){
             e.nu <- 200
